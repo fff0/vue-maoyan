@@ -4,7 +4,8 @@ import http from '@/utils/http.js'
 export default {
   namespaced: true,
   state: {
-    filmList: []
+    filmList: [], // 当前影片的数据
+    curFilmType: 0 // ssssssss
   },
   mutations: {
     SETFIMLIST (state, list) {
@@ -19,7 +20,7 @@ export default {
           cityId: 440300,
           pageNum: 1,
           pageSize: 10,
-          type: 1,
+          type: 1, // 1表示正在热映，2表示即将上映
           k: 3883304
         },
         headers: {
