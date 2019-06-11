@@ -10,10 +10,11 @@ import './styles/base.less'
 
 // Vue.use(vant)
 
-import { Tab, Tabs } from 'vant'
+import { Tab, Tabs, NavBar } from 'vant'
 Vue
   .use(Tab)
   .use(Tabs)
+  .use(NavBar)
 
 Vue.config.productionTip = false
 
