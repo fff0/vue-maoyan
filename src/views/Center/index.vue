@@ -21,6 +21,16 @@
   <van-tab title="手机验证登录">
     <input type="text" class="txt" placeholder="请输入手机号">
     <input type="password" class="pwd" placeholder="请输入短信验证码">
+    <div class="btn-wrapper">
+      <button class="btn-larger">登录</button>
+    </div>
+    <ul class="subline">
+      <li class="pull-left"><a href="">立即注册</a></li>
+      <li class="pull-right"><a href="">找回密码</a></li>
+    </ul>
+    <div class="copyright">
+      <span>© 猫眼电影 客服电话：400-670-5335</span>
+    </div>
   </van-tab>
 </van-tabs>
 </div>

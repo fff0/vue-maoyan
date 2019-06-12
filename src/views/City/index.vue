@@ -1,6 +1,6 @@
 <template>
   <div class="page-city">
-    <van-nav-bar
+    <van-nav-bar fixed
       title="城市选择"
       left-text="返回"
       left-arrow
@@ -45,7 +45,7 @@
             </ul>
           </li>
         </ul>
-        <div class="lv-indexlist__nav">
+        <div class="lv-indexlist__nav aa">
           <ul>
             <li
               v-for="index in indexlist"
@@ -188,5 +188,10 @@ export default {
       }
     }
   }
+}
+.aa{
+  position: fixed;
+  right: 0;
+  top: auto;
 }
 </style>
