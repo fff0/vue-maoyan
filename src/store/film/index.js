@@ -5,22 +5,25 @@ export default {
   namespaced: true,
   state: {
     filmList: [], // 当前影片的数据
-    curFilmType: 0 // ssssssss
+    curFilmType: 0 // 当前影片类型 0-正在热映 1-即将上映
   },
   mutations: {
     SETFIMLIST (state, list) {
       state.filmList = list
+    },
+    SETCURFILMTYPE (state, type) {
+      state.curFilmType = type
     }
   },
   actions: {
     // 获取影片数据
-    getFilmList ({ commit }) {
+    getFilmList ({ commit, state }) {
       http.get('/gateway', {
         params: {
           cityId: 440300,
           pageNum: 1,
           pageSize: 10,
-          type: 1, // 1表示正在热映，2表示即将上映
+          type: state.curFilmType === 0 ? 1 : 2, // 1表示正在热映，2表示即将上映
           k: 3883304
         },
         headers: {
