@@ -10,13 +10,14 @@
           <i class="iconfont iconf11-copy"></i>
         </router-link>
       </div>
-      <van-tabs v-model="tabAct" class="nav_2" >
+      <van-tabs v-model="curFilmType"
+      @click="tabClick" class="nav_2" >
         <van-tab title="正在热映">
           <FilmList film-type="nowPlaying"
           :list="filmList"></FilmList>
         </van-tab>
         <van-tab title="即将上映">
-          <FilmList film-type="commingSoon"
+          <FilmList film-type="comingSoon"
           :list="filmList"></FilmList>
         </van-tab>
       </van-tabs>
@@ -29,29 +30,31 @@
 import FilmList from '@/components/filmList.vue'
 import { mapActions, mapState } from 'vuex'
 export default {
-  data () {
-    return {
-      tabAct: 0
-    }
-  },
-
-  watch: {
-    tabAct (newvalue) {
-      console.log(newvalue)
-    }
-  },
   components: {
     FilmList
   },
   computed: {
     ...mapState('film', [
       'filmList'
-    ])
+    ]),
+    curFilmType: {
+      get () {
+        return this.$store.state.film.curFilmType
+      },
+      set (value) {
+        this.$store.commit('film/SETCURFILMTYPE', value)
+      }
+    }
   },
   methods: {
     ...mapActions('film', [
       'getFilmList'
-    ])
+    ]),
+    // 影片类型切换
+    tabClick (index, title) {
+      // 重新发送ajax请求
+      this.getFilmList()
+    }
   },
   created () {
     this.getFilmList()
