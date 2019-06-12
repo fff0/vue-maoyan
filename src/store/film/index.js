@@ -31,6 +31,7 @@ export default {
           'X-Host': 'mall.film-ticket.film.list'
         }
       }).then(res => {
+        // console.log(res.data.films)
         commit('SETFIMLIST', res.data.films)
       })
     }
