@@ -70,7 +70,7 @@ export default {
     background-color: #e54847;
     position: sticky;
     top: 0;
-    z-index: 100
+    z-index: 199;
   }
   .tou h1{
     margin-right: 0 !important;
