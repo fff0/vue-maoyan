@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/film/:filmId',
+      name: 'filmDetail',
+      component: () => import('./views/Film/index.vue')
+    },
+    {
       path: '/',
       component: () => import('./views/Index/index.vue'),
       children: [

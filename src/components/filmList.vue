@@ -1,10 +1,24 @@
 // 影片列表组件
 <template>
   <ul class="film-list">
-    <!-- <li>{{ msg | a(3, 123) }}</li> -->
-    <li class="film-item"
+    <p v-if="filmType == 'comingSoon'">近期最受期待</p>
+    <div v-if="filmType == 'comingSoon'" class="nav">
+      <li v-for="film in list"
+      :key="film.film" class="nav-cen">
+      <img class="film-img" :src="film.poster" alt="">
+      <p class="np np1">{{ film.name }}</p>
+      <p class="np np2">{{ film.category }}</p>
+      </li>
+    </div>
+    <router-link class="film-item"
       v-for="film in list"
-      :key="film.filmId"
+      tag="li"
+      :key="film.filmId" :to="{
+        name:'filmDetail',
+        params: {
+          filmId: film.filmId
+        }
+      }"
       >
       <img class="film-img" :src="film.poster" alt="">
       <div class="film-info">
@@ -18,8 +32,8 @@
         <p class="film-info__detail">{{ film.nation }} | {{ film.runtime }}分钟</p>
       </div>
       <div class="film-buy" v-if="filmType == 'nowPlaying'">购票</div>
-      <div class="film-buy" v-else>预约</div>
-    </li>
+      <div class="film-buy yy" v-else>预约</div>
+    </router-link>
   </ul>
 </template>
 
@@ -32,7 +46,6 @@ export default {
         return ['nowPlaying', 'comingSoon'].indexOf(value) !== -1
       }
     },
-
     // 影片数据
     list: {
       type: Array
@@ -71,3 +84,47 @@ export default {
   }
 }
 </script>
+<style lang="less" scoped>
+  .nav{
+    height: 180px;
+    display: flex;
+    overflow-x:auto;
+    overflow-y: hidden;
+    border-bottom: 5px solid #dadada;
+    .nav-cen{
+      flex-shrink:0;
+      width: 70px;
+      height: 180px;
+      margin: 15px 10px 0px 10px;
+      img{
+        width: 80px;
+      }
+      .np{
+        width: 70px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        &.np1{
+          margin-top: 4px;
+          font-size: 15px;
+          color: #000;
+          font-weight: 600;
+        }
+        &.np2{
+          margin-top:5px;
+          font-size: 13px;
+          color: #ccc;
+        }
+      }
+    }
+  }
+  // 隐藏横向滚动条
+  .nav::-webkit-scrollbar {
+        display: none;
+    }
+  .yy{
+    background: #3c9fe6;
+    color: #fff !important;
+    border: 0 !important;
+  }
+</style>

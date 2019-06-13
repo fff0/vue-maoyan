@@ -61,7 +61,7 @@ export default {
   .nm{
     font: 18px '黑体';
     font-weight: 100;
-    width: 75%;
+    width: 70%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
