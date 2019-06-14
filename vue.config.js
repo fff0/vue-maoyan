@@ -4,6 +4,13 @@ module.exports = {
   // 选项
   devServer: {
     // 正向代理的配置
-    proxy: 'http://m.maoyan.com'
+    proxy: {
+      '/maoyan': {
+      target: 'http://m.maoyan.com/',
+      pathRewrite: {
+        '^/maoyan': ''
+      }
+    }
+}
   }
 }

@@ -9,8 +9,8 @@
       <img :src="filmData.poster" alt="">
       <div class="title">
         <div class="tit1">
-          <h1>{{ filmData.name }}</h1>
-          <span>{{ filmData.grade }} <div>分</div></span>
+          <h1 class="h1">{{ filmData.name }}</h1>
+          <span>7.2<div>分</div></span>
         </div>
         <p class="tit2">{{ filmData.category }}</p>
         <div class="tit2"><span>导演：</span><span>{{ filmData.director }}</span></div>
@@ -100,8 +100,8 @@ export default {
   .title{
     padding: 12px 12px 40px;
     .tit1{
-      display: flex;
       span{
+        float: right;
         margin-left: 200px;
         display: flex;
         color: #ffb232;
@@ -116,8 +116,10 @@ export default {
         }
       }
     }
-    h1{
+    .h1{
       font-size: 20px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .tit2{
       height: 24px;
